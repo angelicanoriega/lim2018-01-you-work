@@ -3,4 +3,35 @@
     background-size: cover;
     background-position: center;
     height: 100vh;
+    margin-top: 50px;
+}
+/* .formulario{
+    background:#333;
+    background-size: cover;
+    background-position: center;
+    width: 320px;
+    height: 600px;
+} */
+select{
+    width: 100%;
+}
+input{
+    width: 100%;
+}
+a{
+    text-combine-upright: none;
+}
+#hidden div h1 {
+    font-size: 80px;
+}
+
+@media(max-width:700px) {
+    #hidden div h1 {
+        font-size: 60px;
+    }
+}
+@media(max-width:450px) {
+    #hidden div h1 {
+        font-size: 40px;
+    }
 }
