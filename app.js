@@ -72,17 +72,26 @@ window.addEventListener("DOMContentLoaded", function () {
         firebase.database().ref(`usuarios/${name.value}`).set(information);
     })
 }, false);
-const paintData = (name, url, directionHtml) => {
+const paintData = (name,lastname,date,hour, url, directionHtml) => {
     const div = document.createElement('div');
+    const div2 = document.createElement('div');
+    const div3 = document.createElement('div');
+    const div4 = document.createElement('div');
     const img = document.createElement('img');
     const p = document.createElement("p");
-    p.setAttribute('class', ' w3-text-black');
-    const text = document.createTextNode(name);
+    const text = document.createTextNode('Nombre '+name+' Apellido '+lastname+' Fecha '+date+' Hora '+hour);
     p.appendChild(text);
     img.setAttribute('src', url);
-    div.setAttribute('class', "col-md-5");
-    div.appendChild(img);
-    div.appendChild(p);
+    img.setAttribute('class', 'img-fluid');
+    div.setAttribute('class', "col-md-12");
+    div2.setAttribute('class', "row");
+    div3.setAttribute('class', "col-md-3");
+    div4.setAttribute('class', "col-md-9");
+    div3.appendChild(img);
+    div4.appendChild(p);
+    div2.appendChild(div3);  
+    div2.appendChild(div4);
+    div.appendChild(div2);
     directionHtml.appendChild(div);
 }
 visitantes.addEventListener('click',()=>{
@@ -96,6 +105,6 @@ administración.addEventListener('click',()=>{
     document.getElementById('Visitantes')
     const ref = firebase.database().ref("usuarios");
     ref.on("child_added", snap => {
-        paintData(snap.val().name, snap.val().url, data);
+        paintData(snap.val().name,snap.val().lastname,snap.val().date, snap.val().hour, snap.val().url, data);
     })
 })
