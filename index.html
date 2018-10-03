@@ -22,17 +22,17 @@
     </div>
     <!-- menu end -->
     <!--Primera vista -->
-    <div id="hidden">
+    <div id="first" >
         <div id="first" class="container-fluid slider d-flex justify-content-center align-items-center pt-3">
             <div class="text-center text-dark">
                 <h1 class="display-4 font-weight-bold pb-3">"Bienvenid@"</h1>
                 <div class="row pt-3">
                     <div class="col-md-6">
-                        <h2 class="fas fa-plane-arrival p-4 border border-dark rounded-circle"></h2>
+                        <h2 id="Visitantes" class="fas fa-plane-arrival p-4 border border-dark rounded-circle"></h2>
                         <p>Visitantes</p>
                     </div>
                     <div class="col-md-6">
-                        <h2 class="fas fa-home p-4 border border-dark rounded-circle"></h2>
+                        <h2 id="Administración" class="fas fa-home p-4 border border-dark rounded-circle"></h2>
                         <p>Administración</p>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
         </div>
     </div>
     <!-- Primera vista end -->
-    <!-- Segunda vista -->
-    <div id="hidden">
+    <!-- Segunda vistah -->
+    <div id="second" class="hidden">
         <div id="first" class="container-fluid slider d-flex justify-content-center align-items-center pt-3">
             <div class="text-center text-dark ">
                 <div class="row">
@@ -52,25 +52,22 @@
                                 <h1>Registra tu visita</h1>
                             </div>
                             <div class="col-md-12">
-                                    <div class="row">
+                                <div class="row">
                                     <div class="col-md-7">
-                                        <video id="video" autoplay></video>
+                                        <video id="video" autoplay width="300"></video>
                                         <button id="tomar">Capturar</button>
-
                                     </div>
                                     <div class="col-md-5">
-                                        <canvas id="canvas" width="640" height="480"></canvas>
-                                    </div>
+                                        <canvas id="canvas" width="500" height="250" ></canvas>
                                     </div>
                                 </div>
-                            <div class="col-md-12 p-2"> <input class="pb-3" type="text" name="" id="name"
-                                    placeholder="Nombre">
                             </div>
-                            <div class="col-md-12 p-2"> <input class="pb-3" type="text" name="" id="lastname"
+                            <div class="col-md-12 p-2"> <input type="text" name="" id="name" placeholder="Nombre">
+                            </div>
+                            <div class="col-md-12 p-2"> <input  type="text" name="" id="lastname"
                                     placeholder="Apellido">
                             </div>
-                            <div class="col-md-12 p-2"> <input class="pb-3" type="text" name="" id="Id"
-                                    placeholder="DNI/CE">
+                            <div class="col-md-12 p-2"> <input  type="text" name="" id="Id" placeholder="DNI/CE">
                             </div>
                             <div class="col-md-12 p-2">
                                 <select class="p-2" id="mySelect">
@@ -96,20 +93,11 @@
     </div>
     <!--  Segunda vista end-->
     <!-- tercera vista-->
-    <!-- <div id="hidden">
+    <div id="three" class="hidden">
         <div id="first" class="container-fluid slider d-flex justify-content-center align-items-center pt-3">
-            <div class="text-center text-dark ">
-                    <video id="video" autoplay></video>
-                    <hr>
-                    <button id="tomar">Capturar</button>
-                    <hr>
-                    <canvas id="canvas" width="640" height="480"></canvas>
+            <div id="usuari-information" class="container row"> 
             </div>
-
-
         </div>
-    </div> -->
-    </div>
     </div>
     <!-- tercera vista end -->
     <!-- footer -->

@@ -1,21 +1,24 @@
-const name= document.getElementById('name');
-const lastname= document.getElementById('lastname');
-const id= document.getElementById('Id');
-const btn=document.getElementById('btn');
-const date=new Date().getDate()+'day '+new Date().getMonth()+'month '+new Date().getFullYear()+'year ';
-const hour=new Date().getHours()+'h '+new Date().getMinutes()+'min '+new Date().getSeconds()+'sec';
-const information={
-    name:'',
-    lastname:'',
-    url:'',
-    date:date,
-    hour:hour
+const name = document.getElementById('name');
+const lastname = document.getElementById('lastname');
+const id = document.getElementById('Id');
+const btn = document.getElementById('btn');
+const data = document.getElementById('usuari-information');
+const visitantes = document.getElementById('Visitantes');
+const administración = document.getElementById('Administración');
+const date = new Date().getDate() + 'day ' + new Date().getMonth() + 'month ' + new Date().getFullYear() + 'year ';
+const hour = new Date().getHours() + 'h ' + new Date().getMinutes() + 'min ' + new Date().getSeconds() + 'sec';
+const information = {
+    name: '',
+    lastname: '',
+    url: '',
+    date: date,
+    hour: hour
 }
-btn.addEventListener('click',()=>{
-    information.name=name.value;
-    information.lastname=lastname.value;
-    firebase.database().ref(`${date}/${name.value}`).set(information);
-})
+// btn.addEventListener('click',()=>{
+//     information.name=name.value;
+//     information.lastname=lastname.value;
+//     firebase.database().ref(`${date}/${name.value}`).set(information);
+// })
 
 
 // capturar imagen
@@ -63,10 +66,36 @@ window.addEventListener("DOMContentLoaded", function () {
         context.drawImage(video, 0, 0, 500, 360);
     });
     btn.addEventListener('click', () => {
-        context.drawImage(video, 0, 0, 500, 360);
         information.name = name.value;
         information.lastname = lastname.value;
         information.url = canvas.toDataURL();
-        firebase.database().ref(`${date}/${name.value}`).set(information);
+        firebase.database().ref(`usuarios/${name.value}`).set(information);
     })
 }, false);
+const paintData = (name, url, directionHtml) => {
+    const div = document.createElement('div');
+    const img = document.createElement('img');
+    const p = document.createElement("p");
+    p.setAttribute('class', ' w3-text-black');
+    const text = document.createTextNode(name);
+    p.appendChild(text);
+    img.setAttribute('src', url);
+    div.setAttribute('class', "col-md-5");
+    div.appendChild(img);
+    div.appendChild(p);
+    directionHtml.appendChild(div);
+}
+visitantes.addEventListener('click',()=>{
+    document.getElementById('second').removeAttribute('class');
+    document.getElementById('first').setAttribute('class', "hidden");
+
+})
+administración.addEventListener('click',()=>{
+    document.getElementById('three').removeAttribute('class');
+    document.getElementById('first').setAttribute('class', "hidden");
+    document.getElementById('Visitantes')
+    const ref = firebase.database().ref("usuarios");
+    ref.on("child_added", snap => {
+        paintData(snap.val().name, snap.val().url, data);
+    })
+})
