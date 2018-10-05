@@ -37,7 +37,7 @@ const paintData = (name, lastname, date, hour, url, directionHtml) => {
     img.setAttribute('src', url)
     img.setAttribute('class', 'img-fluid');
     div.setAttribute('class', "col-md-12 p-2 ");
-    div2.setAttribute('class', "row border border-white");
+    div2.setAttribute('class', "row ");
     div3.setAttribute('class', "col-md-6");
     div4.setAttribute('class', "col-md-6");
     div3.appendChild(img);
