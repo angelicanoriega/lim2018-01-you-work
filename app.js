@@ -108,7 +108,10 @@ window.addEventListener("DOMContentLoaded", function () {
         information.url = canvas.toDataURL();
         information.email = myselect.value;
         email(information.email,information.name);
+        document.getElementById('four').removeAttribute('class');
+        document.getElementById('second').setAttribute('class', "hidden");
         firebase.database().ref(`usuarios/${name.value}`).set(information);
+
     })
 }, false);
 
