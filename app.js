@@ -23,27 +23,39 @@ const paintData = (name, lastname, date, hour, url, directionHtml) => {
     const div4 = document.createElement('div');
     const img = document.createElement('img');
     const p = document.createElement("p");
-    const text = document.createTextNode('Nombre ' + name + ' Apellido ' + lastname + ' Fecha ' + date + ' Hora ' + hour);
+    const p2 = document.createElement("p");
+    const p3 = document.createElement("p");
+    const p4 = document.createElement("p");
+    const text = document.createTextNode('Nombre: ' + name );
+    const text2 = document.createTextNode(' Apellido: ' + lastname);
+    const text3 = document.createTextNode(' Fecha: ' + date);
+    const text4 = document.createTextNode( ' Hora: ' + hour);
     p.appendChild(text);
-    img.setAttribute('src', url);
+    p2.appendChild(text2);
+    p3.appendChild(text3);
+    p4.appendChild(text4);
+    img.setAttribute('src', url)
     img.setAttribute('class', 'img-fluid');
-    div.setAttribute('class', "col-md-12");
-    div2.setAttribute('class', "row");
-    div3.setAttribute('class', "col-md-3");
-    div4.setAttribute('class', "col-md-9");
+    div.setAttribute('class', "col-md-12 p-2 ");
+    div2.setAttribute('class', "row border border-white");
+    div3.setAttribute('class', "col-md-6");
+    div4.setAttribute('class', "col-md-6");
     div3.appendChild(img);
-    div4.appendChild(p);
+    div4.appendChild(p);   
+    div4.appendChild(p2);
+    div4.appendChild(p3);
+    div4.appendChild(p4);
     div2.appendChild(div3);
     div2.appendChild(div4);
     div.appendChild(div2);
     directionHtml.appendChild(div);
 }
-const email = (email) => {
+const email = (email,visit) => {
     console.log(email);
     Email.send ("maria.noriega@utec.edu.pe",
     email,
-    "Este es un tema",
-    "este es el cuerpo",
+    "Tienes una visita",
+    "te esta visitando "+visit ,
     {token: "40ecc9a1-9436-4d02-8b23-35d076eacfd9"});
 }
 
@@ -95,7 +107,7 @@ window.addEventListener("DOMContentLoaded", function () {
         information.lastname = lastname.value;
         information.url = canvas.toDataURL();
         information.email = myselect.value;
-        email(information.email);
+        email(information.email,information.name);
         firebase.database().ref(`usuarios/${name.value}`).set(information);
     })
 }, false);
@@ -105,10 +117,10 @@ visitantes.addEventListener('click', () => {
     document.getElementById('first').setAttribute('class', "hidden");
 
 })
+
 administración.addEventListener('click', () => {
     document.getElementById('three').removeAttribute('class');
     document.getElementById('first').setAttribute('class', "hidden");
-    document.getElementById('Visitantes')
     const ref = firebase.database().ref("usuarios");
     ref.on("child_added", snap => {
         paintData(snap.val().name, snap.val().lastname, snap.val().date, snap.val().hour, snap.val().url, data);
