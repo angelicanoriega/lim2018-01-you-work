@@ -13,10 +13,11 @@ const information = {
     lastname: '',
     url: '',
     email: '',
+    id:'',
     date: date,
     hour: hour
 }
-const paintData = (name, lastname, date, hour, url, directionHtml) => {
+const paintData = (name, lastname, date, hour, url,id, directionHtml) => {
     const div = document.createElement('div');
     const div2 = document.createElement('div');
     const div3 = document.createElement('div');
@@ -26,25 +27,29 @@ const paintData = (name, lastname, date, hour, url, directionHtml) => {
     const p2 = document.createElement("p");
     const p3 = document.createElement("p");
     const p4 = document.createElement("p");
+    const p5 = document.createElement("p");
     const text = document.createTextNode('Nombre: ' + name );
     const text2 = document.createTextNode(' Apellido: ' + lastname);
     const text3 = document.createTextNode(' Fecha: ' + date);
     const text4 = document.createTextNode( ' Hora: ' + hour);
-    p.appendChild(text);
-    p2.appendChild(text2);
-    p3.appendChild(text3);
-    p4.appendChild(text4);
+    const text5 = document.createTextNode( ' Documento de identidad: ' + id);
     img.setAttribute('src', url)
     img.setAttribute('class', 'img-fluid');
     div.setAttribute('class', "col-md-12 p-2 ");
     div2.setAttribute('class', "row ");
     div3.setAttribute('class', "col-md-6");
     div4.setAttribute('class', "col-md-6");
+    p.appendChild(text);
+    p2.appendChild(text2);
+    p3.appendChild(text3);
+    p4.appendChild(text4);
+    p5.appendChild(text5);
     div3.appendChild(img);
     div4.appendChild(p);   
     div4.appendChild(p2);
     div4.appendChild(p3);
     div4.appendChild(p4);
+    div4.appendChild(p5);
     div2.appendChild(div3);
     div2.appendChild(div4);
     div.appendChild(div2);
@@ -107,6 +112,7 @@ window.addEventListener("DOMContentLoaded", function () {
         information.lastname = lastname.value;
         information.url = canvas.toDataURL();
         information.email = myselect.value;
+        information.id = id.value;
         email(information.email,information.name);
         document.getElementById('four').removeAttribute('class');
         document.getElementById('second').setAttribute('class', "hidden");
@@ -126,6 +132,6 @@ administración.addEventListener('click', () => {
     document.getElementById('first').setAttribute('class', "hidden");
     const ref = firebase.database().ref("usuarios");
     ref.on("child_added", snap => {
-        paintData(snap.val().name, snap.val().lastname, snap.val().date, snap.val().hour, snap.val().url, data);
+        paintData(snap.val().name, snap.val().lastname, snap.val().date, snap.val().hour, snap.val().url, snap.val().id, data);
     })
 })
