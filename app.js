@@ -52,11 +52,42 @@ const paintData = (name, lastname, date, hour, url, directionHtml) => {
 }
 const email = (email,visit) => {
     console.log(email);
-    Email.send ("maria.noriega@utec.edu.pe",
-    email,
-    "Tienes una visita",
-    "te esta visitando "+visit ,
-    {token: "40ecc9a1-9436-4d02-8b23-35d076eacfd9"});
+    // Email.send ("maria.noriega@utec.edu.pe",
+    // email,
+    // "Tienes una visita",
+    // "te esta visitando "+visit ,
+    // {token: "40ecc9a1-9436-4d02-8b23-35d076eacfd9"});
+    $.ajax({
+        type: "POST",
+        url: "https://mandrillapp.com/api/1.0/messages/send.json",
+        data: {
+            'key': 'ZGiSDAUGJIgaCMIqm9ysPA',
+            'message': {
+                "html": `<div>
+                <span>Hola!!!${visit} viene a visitarte .</span>
+                </div>`,
+                "text": "contactate con nosotros: 987654321",
+                "subject": "Visita Nueva",
+                "from_email":"mariaanguevara@gmail.com",
+                "from_name": "Comunal coworking",
+                "to": [
+                    {
+                        'email': email,
+                        'name': visit,
+                        "type": "to"
+                    }
+                ],
+                "headers": {
+                    "Reply-To": "l.ticze@laboratoria.la"
+                }
+
+            },
+            "async": false,
+            "ip_pool": "Main Pool",
+            "send_at": email
+        }
+    });
+
 }
 
 window.addEventListener("DOMContentLoaded", function () {
