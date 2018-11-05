@@ -6,4 +6,6 @@ It's food es una red social enfocada en el tema de la alimentación saludable, d
 
 ## Imagenes
 
-![GifNav](/imagenes-readme/prototipo-de-alta-fidelidad-navegador.gif)
+![GifNav](https://raw.githubusercontent.com/angelicanoriega/lim2018-01-you-work/gh-pages/imagenes-readme/vista1.PNG)
+![GifNav](https://raw.githubusercontent.com/angelicanoriega/lim2018-01-you-work/gh-pages/imagenes-readme/vista2.PNG)
+![GifNav](https://raw.githubusercontent.com/angelicanoriega/lim2018-01-you-work/gh-pages/imagenes-readme/vista3.PNG)
