@@ -18,6 +18,11 @@ canvas{
 width: 100%;
 height: 100%;
 }
+.house{
+    background: white;
+    color: #333;
+    
+}
 h2{
     cursor: pointer;
     border: solid;
@@ -25,7 +30,7 @@ h2{
 }
 #usuari-information{
     width: 100%;
-height: 100%;
+height: 300px;
     overflow: scroll;
 }
 .col-md-6:hover h2{
